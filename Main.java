@@ -1,33 +1,21 @@
 package com.JL;
 
+//提醒垃圾回收：		System.gc();   ,JVM垃圾回收机制运行时不定时的，使用前面指令可以手动使之进行
+
 public class Main {
-	/* 0 1 1 2 3 5 8 13 21 ...*/
-	
-	//1 < logn < n < nlogn < n^2 < n^3 < 2^n < n! < n^n
-	
-	//效率非常低,时间复杂度O(2^n) 
-	//1 + 2 + 4 + 8 + 16 + ...+ 2^(n - 2) = 2^(n - 1) - 1 = O(2^n)
-	public static long fib1(int n) {
-		if(n <= 1)	return n;
-		return fib1(n - 1) + fib1(n - 2);
-	}
-	
-	//效率高，时间复杂度O(n)
-	public static int fib2(int n) {
-		if(n <= 1) return n;
-		int first = 0;
-		int second = 1;
-		for(int i = 0; i < n - 1; i++) {
-			second = first + second;
-			first = second - first;
-		}
-		return second;
-	}
-	
-	public static void main(String[] args){
-		int i = 1;
-		while(true) {
-			System.out.println(i + ":" + fib1(i++));
-		}	
+	public static void main(String[] args) {
+		ArrayList<Integer> list = new ArrayList<>(2);
+		ArrayList<Person> persons = new ArrayList<>(2);
+		persons.add(new Person(10, "John"));
+		persons.add(new Person(20, "James"));
+		persons.add(new Person(30, "Rose"));
+		list.add(99);
+		list.add(88);
+		list.add(77);
+		list.remove(1);
+		list.add(list.size(),66);
+		System.out.println(persons.indexOf(new Person(10,"John")));
+		System.out.println(list);
+		System.out.println(persons);
 	}
 }
